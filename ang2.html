@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="zfmodule">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="angular.js"></script>
+</head>
+<body >
+<div ng-controller="rootCtrl" ng-init="show=false">
+    <input type="button" ng-click="clickme()" value="wo1">
+    <div >
+       {{num}}
+
+    </div>
+</div>
+<div ng-controller="rootCtrl" ng-init="show=false">
+    <input type="button" ng-click="clickme()" value="wo2">
+    <div >
+        {{num}}
+
+    </div>
+</div>
+</body>
+<script>
+    var app = angular.module('zfmodule',[]);
+    app.controller('rootCtrl',function($http,$scope,$rootScope){
+        $scope.name = "hello";
+        $rootScope.num = 1;
+        $scope.clickme = function(){
+            $http({
+                url:"/book",
+                method:'get'
+            }).success(function(data){
+                console.log(data);
+            })
+        }
+    });
+</script>
+</html>

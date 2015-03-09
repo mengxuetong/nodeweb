@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>socket.io 实例</title>
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+<script>
+    window.onload = function(){
+        var socket = io.connect('/');
+        socket.on('message',function(data){
+            console.log('data') //接受服务端的消息
+        })
+        socket.on('connect',function(){
+            socket.send('客户端发送的消息');
+            socket.emit('message','...');
+        });
+    }
+</script>
+socket.io page
+</body>
+</html>

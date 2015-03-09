@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="zfmodule">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="angular.js"></script>
+</head>
+<body ng-init="books=['python','java','javascript']">
+<div ng-controller="rootCtrl">
+    <input ng-model="name">
+    <ul ng-repeat="book in books|filter:name"><li>{{book|myUpper}}</li></ul>
+</div>
+</body>
+<script>
+    var app = angular.module('zfmodule',[]);
+    app.controller('rootCtrl',function($scope){
+        $scope.name = "hello";
+    });
+    app.filter('myUpper',function(){
+        return function(val){
+            return val.slice(0,1)+val.slice(1,3).toUpperCase()+val.slice(3);
+        }
+    });
+</script>
+</html>
