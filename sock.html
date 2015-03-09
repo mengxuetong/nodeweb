@@ -8,13 +8,13 @@
 <body>
 <script>
     window.onload = function(){
-        var socket = io.connect('/');
+        var socket = io.connect('ws://localhost:8888');
         socket.on('message',function(data){
             console.log('data') //接受服务端的消息
         })
         socket.on('connect',function(){
             socket.send('客户端发送的消息');
-            socket.emit('message','...');
+            //socket.emit('message','...');
         });
     }
 </script>
